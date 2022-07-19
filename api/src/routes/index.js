@@ -126,11 +126,8 @@ router.get("/pokemons/:id", async (req,res) =>{
         pokemonName ?
         res.status(200).send(pokemonName) :
         res.status(404).send("No existe ese pokemon")
-        console.log(id)
     }
-    else{
-        res.status(200).send("no existe pokemons con esa id")
-    }
+    
 })
 
 
