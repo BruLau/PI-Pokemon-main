@@ -14,27 +14,27 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    vida: {
+    health: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    ataque: {
+    attack: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-   defensa: {
+    defense: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    velocidad: {
+    velocity: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    altura: {
+    height: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    peso: {
+    weight: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -42,7 +42,10 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true,
-    }
+    },
+    img: {
+      type: DataTypes.STRING,
+    },
   });
 
 };

@@ -3,7 +3,7 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require("axios");
-const { Pokemon, Tipo } = require('../db');
+const { Pokemon, Types } = require('../db');
 const router = Router();
 
 // Configurar los routers
@@ -12,6 +12,7 @@ const getApiInfo = async () => {
     try {
         let url = 'https://pokeapi.co/api/v2/pokemon/';
         let pokemons = [];
+        do {
             let apiInfo = await axios.get(url);
             let ApiUrl = apiInfo.data.results.map(e => {
                 return {
@@ -20,6 +21,8 @@ const getApiInfo = async () => {
                 }
             })
             pokemons.push(...ApiUrl);
+            url = apiInfo.data.next;
+        } while (url != null && pokemons.length < 30);
            
        
         let pokeInfo = await Promise.all(pokemons.map(async e => {
@@ -34,12 +37,12 @@ const getApiInfo = async () => {
                        
                     })
                 }),
-                vida: pokemon.data.stats[0].base_stat,
-                ataque: pokemon.data.stats[1].base_stat,
-                defensa: pokemon.data.stats[2].base_stat,
-                velocidad: pokemon.data.stats[5].base_stat,
-                altura: pokemon.data.height,
-                peso: pokemon.data.weight,
+                health: pokemon.data.stats[0].base_stat,
+                attack: pokemon.data.stats[1].base_stat,
+                defense: pokemon.data.stats[2].base_stat,
+                velocity: pokemon.data.stats[5].base_stat,
+                height: pokemon.data.height,
+                weight: pokemon.data.weight,
             }
         }));
        
@@ -52,7 +55,7 @@ const getApiInfo = async () => {
 const getDbInfo = async () => {
     return await Pokemon.findAll({
         include: {
-            model: Tipo,
+            model: Types,
             attributes: ["name"],
             through:{
                 attributes: [],
@@ -84,33 +87,34 @@ router.get("/pokemons", async (req,res) =>{
 router.get("/types", async (req,res) =>{
     const typeApi = await axios.get("https://pokeapi.co/api/v2/type")
     typeApi.data.results.map(e=> {
-    Tipo.findOrCreate({
+    Types.findOrCreate({
         where:{ name: e.name}
     })
 })
-const allTypes = await Tipo.findAll()
+const allTypes = await Types.findAll()
 res.send(allTypes)
 })
 
 router.post("/pokemons", async (req,res) =>{
    
-    const {name, vida, ataque, defensa, velocidad, altura, peso, createdInDb, tipo} = req.body;
+    const {name, health, attack, defense, velocity, height, weight, createdInDb, img, type} = req.body;
 
    if(name){
    var pokeCreated = await Pokemon.create({
     name,
-    vida,
-    ataque,
-    defensa,
-    velocidad,
-    altura,
-    peso,
-    createdInDb
+    health,
+    attack,
+    defense,
+    velocity,
+    height,
+    weight,
+    createdInDb,
+    img
    })
-   let tipoDb= await Tipo.findAll({
-    where: {name: tipo}
+   let typeDb= await Types.findAll({
+    where: {name: type}
    })
-   pokeCreated.addTipo(tipoDb)
+   pokeCreated.addTypes(typeDb)
    res.send("Pokemon creado con exito")
 }
 

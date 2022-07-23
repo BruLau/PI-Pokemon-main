@@ -11,3 +11,15 @@ export function getPokemons(){
         })
 }
 }   
+export const filterPokemonByType = (payload) => {
+    return {
+        type: "FILTER_BY_TYPE",
+        payload
+    };
+}
+    export const filterPokemonByDb = (payload) => {
+        return {
+            type: "FILTER_BY_DB",
+            payload
+        };
+};
