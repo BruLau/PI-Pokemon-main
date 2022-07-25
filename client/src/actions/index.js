@@ -2,7 +2,7 @@ import axios from "axios"
 
 export function getPokemons(){
     return async function(dispatch){
-        var json = await axios.get("http://localhost:3001/pokemons/", {
+        var json = await axios.get("http://localhost:3001/pokemons", {
             
         })
         return dispatch({
@@ -22,4 +22,28 @@ export const filterPokemonByType = (payload) => {
             type: "FILTER_BY_DB",
             payload
         };
+};
+
+export const orderName= (payload) => {
+    return {
+        type: "ORDER_NAME",
+        payload
+    };
+};
+
+export const searchBar= (payload) => {
+    return async function (dispatch){
+        try {
+            var json = await axios.get("http://localhost:3001/pokemons?name=" + payload)
+            return dispatch({
+                type:"SEARCH",
+                payload: json.data
+            })
+        } catch (error) {
+            return dispatch({
+                type:"SEARCH",
+                payload: error
+            })
+        }
+    }
 };

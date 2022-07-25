@@ -1,14 +1,15 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector} from "react-redux"
-import { getPokemons , filterPokemonByType, filterPokemonByDb} from "../actions";
+import { getPokemons , filterPokemonByType, filterPokemonByDb, orderName} from "../actions";
 import {Link} from "react-router-dom"
 import PokeCard from "./Card";
 import Paginado from "./Paginado";
-
+import SearchBar from "./SearchBar";
 export default function Home(){
     const dispatch =  useDispatch()
     const allPokemons = useSelector((state)=>state.pokemons)
+    const [order, setOrder] = useState("")
     const [currentPage, setcurrentPage] = useState(1);
     const [pokemonPerPage, setpokemonPerPage] = useState(12);
     const indexOfLastPokemon= currentPage * pokemonPerPage
@@ -24,17 +25,29 @@ export default function Home(){
 
     function handleClick(e){
         e.preventDefault()
+        paginado(1)
         dispatch(getPokemons())
     }
     const handleFilterType = (e) => {
         e.preventDefault();
+        paginado(1)
         dispatch(filterPokemonByType(e.target.value)); 
         
       };
     const handleFilterDb = (e) => {
         e.preventDefault();
+        paginado(1)
         dispatch(filterPokemonByDb(e.target.value)); 
+        document.getElementById("input").value = "";
     };
+    const handleSort= (e) => {
+        e.preventDefault()
+        dispatch(orderName(e.target.value));
+        paginado(1)
+        setOrder(`Ordenado ${e.target.value}`)
+        document.getElementById("input").value = "";
+    }
+
     return(
         <div>
             <Link to= "/Pokemon">Crear Pokemon</Link>
@@ -43,9 +56,12 @@ export default function Home(){
                 Volver a cargar todos los pokemons
             </button>
             <div>
-                <select name="" id="">
+                <select placeholder="buscar"  onChange={e => {handleSort(e)}} name="" id="">
+                    <option value="ord">ordenar:</option>
                     <option value="asc">ascendente</option>
                     <option value="desc">descendente</option>
+                    <option value="may">mayor ataque</option>
+                    <option value="men">menos ataque</option>
                 </select>
                 <select onChange={e => {handleFilterDb(e)}} name="" id="">
                     <option value="all">todos</option>
@@ -75,16 +91,18 @@ export default function Home(){
                     <option value="unknown">unknown</option>
                     <option value="shadow">shadow</option>
                 </select>
+                <SearchBar></SearchBar>
               <Paginado
                 pokemonsPerPage={pokemonPerPage}
                 allPokemons={allPokemons.length}
                 paginado={paginado}
               />
+              
                 { currentPokemon?.map((e)=>{
                     return(
                         <fragment>
                             <Link to={"/home/" }>
-                            <PokeCard name={ e.name} types={e.types}  img={e.img} />
+                            <PokeCard name={ e.name} types={e.types} attack={e.attack}  img={e.img} />
                             </Link>
                         </fragment>
                     )

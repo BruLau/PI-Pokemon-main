@@ -22,7 +22,7 @@ const getApiInfo = async () => {
             })
             pokemons.push(...ApiUrl);
             url = apiInfo.data.next;
-        } while (url != null && pokemons.length < 30);
+        } while (url != null && pokemons.length < 40);
            
        
         let pokeInfo = await Promise.all(pokemons.map(async e => {
