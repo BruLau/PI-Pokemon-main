@@ -102,7 +102,7 @@ export default function Home(){
                     return(
                         <fragment>
                             <Link to={"/home/" }>
-                            <PokeCard name={ e.name} types={e.types} attack={e.attack}  img={e.img} />
+                            <PokeCard name={ e.name} types={e.types} attack={e.attack} id={e.id}  img={e.img} />
                             </Link>
                         </fragment>
                     )

@@ -107,7 +107,7 @@ case "GET_POKEMONS":
         return{
             ...state
         }
-        case "DETAILS":
+        case "DETAIL":
             return{
                 ...state,
                 detail: action.payload
