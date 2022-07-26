@@ -11,6 +11,26 @@ export function getPokemons(){
         })
 }
 }   
+
+export function getTypes(){
+    return async function(dispatch){
+        var json = await axios.get("http://localhost:3001/types", {
+            
+        })
+        return dispatch({
+            type:"GET_TYPES",
+            payload: json.data
+        })
+}
+} 
+
+export function postPokemon(payload){
+    return async function(dispatch){
+        var json = await axios.post("http://localhost:3001/pokemons", payload)
+        return json
+}
+} 
+
 export const filterPokemonByType = (payload) => {
     return {
         type: "FILTER_BY_TYPE",
