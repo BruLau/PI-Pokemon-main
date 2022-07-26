@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link,useHistory } from "react-router-dom";
-import { postPokemon, getTypes } from "../actions";
+import { postPokemon, getTypes } from "../../actions";
 import { useDispatch, useSelector} from "react-redux"
-      
+ import validate from "./validation";     
 
 
 export default function PokemonCreate(){
@@ -23,69 +23,7 @@ const [errors, setErrors] = useState({})
     img: ""
     })
 
-    const validate = (input) =>
-    {
-        let noEmpty = /\S+/;
-        let validateName = /^[a-z]+$/i;
-        let validateUrl = /^(ftp|http|https):\/\/[^ "]+$/;
-        let errors={}
-        if(!noEmpty.test(input.name))
-        {
-            errors.name ="Se requiere un nombre"
-        }
-        else if( input.name.length < 3){
-            errors.name ="El nombre debe tener como minimo 3 caracteres"
-        }
-        else if(!validateName.test(input.name)){
-            errors.name ="El nombre no puede contener numeros"
-        }
-        else if (!input.health ) {
-            errors.health = "Debes completar este campo";
-        }
-        else if(parseInt(input.health) < 1){
-            errors.health = "Debe ser mayor a 1";
-        }
-        else if (!input.attack ) {
-            errors.attack = "Debes completar este campo";
-        }
-        else if(parseInt(input.attack) < 1){
-            errors.attack= "Debe ser mayor a 1";
-        }
-        else if (!input.defense ) {
-            errors.defense = "Debes completar este campo";
-        }
-        else if(parseInt(input.defense) < 1){
-            errors.defense = "Debe ser mayor a 1";
-        }
-        else if (!input.velocity) {
-            errors.velocity = "Debes completar este campo";
-        }
-        else if(parseInt(input.velocity) < 1){
-            errors.velocity = "Debe ser mayor a 1";
-        }
-        else if (!input.height ) {
-            errors.height = "Debes completar este campo";
-        }
-        else if(parseInt(input.height) < 1){
-            errors.height = "Debe ser mayor a 1";
-        }
-        else if (!input.weight ) {
-            errors.weight = "Debes completar este campo";
-        }
-        else if(parseInt(input.weight) < 1){
-            errors.weight = "Debe ser mayor a 1";
-        }
-        else if(!input.img){
-            errors.img = "Se requiere una URL"
-        }
-        else if(!validateUrl.test(input.img)){
-            errors.img = "Debe ser una URL valida ";
-        }
-
-
-
-        return errors
-    }
+    
     function handleSubmit(e){
         e.preventDefault()
         if (
@@ -96,7 +34,8 @@ const [errors, setErrors] = useState({})
             !errors.speed &&
             !errors.height &&
             !errors.weight &&
-            !errors.img 
+            !errors.img  &&
+            input.name !== ""
         ) {
         console.log(input)
         dispatch(postPokemon(input))  
@@ -137,7 +76,12 @@ const [errors, setErrors] = useState({})
         }
         
     }
-
+    function handleDelete(e){
+        setInput({
+            ...input,
+            type: input.type.filter(a=>a!==e)
+        })
+    }
     useEffect(()=> {
         dispatch(getTypes())
 }, [])
@@ -196,9 +140,17 @@ return(
     <input type="text" value={input.img} name ="img" onChange={handleChange}/>
     <p className='error-input'>{errors.img}</p>
     </div>
-    <ul><li>{input.type.map(e=>e + " " )}</li></ul>
+    
 <button type="submit"  >Crear Pokemon</button>
 </form>
+
+<ul><li>{input.type.map(e=>
+        <div>
+            <p>{e}</p>
+            <button onClick={()=>handleDelete(e)}>x</button>
+        </div> )}            
+        </li></ul>
+
 
     </div>
 )

@@ -51,6 +51,22 @@ export const orderName= (payload) => {
     };
 };
 
+export const detail= (id)=>{
+return async function (dispatch){
+    try {
+        var json = await axios.get("http://localhost:3001/pokemons/" + id)
+        return dispatch({
+            type:"DETAIL",
+            payload: json.data
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+}
+
+
+
 export const searchBar= (payload) => {
     return async function (dispatch){
         try {
