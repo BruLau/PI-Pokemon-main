@@ -37,7 +37,8 @@ const [errors, setErrors] = useState({})
             !errors.img  &&
             input.name !== ""
         ) {
-        console.log(input)
+        
+        
         dispatch(postPokemon(input))  
         alert("pokemon creado correctamente!!")
         setInput({
@@ -89,6 +90,7 @@ const [errors, setErrors] = useState({})
 
 return(
     <div>
+       { console.log(types)}
         <Link to= "/home"><button>Volver a inicio</button></Link>
         <h1>Crea tu propio Pokemon</h1>
 <form onSubmit={(e)=>handleSubmit(e)}>

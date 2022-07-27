@@ -16,7 +16,7 @@ case "GET_POKEMONS":
     case "FILTER_BY_TYPE":
             let filterType = state.allPokemons;
             
-            let typeFiltered = action.payload === 'todos' ? state.pokemons : filterType.filter(e => e.types.some(e => e.name === action.payload));
+            let typeFiltered = action.payload === 'todos' ? filterType : filterType.filter(e => e.types.some(e => e.name === action.payload));
             
             return {
                 ...state,

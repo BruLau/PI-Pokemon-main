@@ -1,14 +1,15 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector} from "react-redux"
-import { getPokemons , filterPokemonByType, filterPokemonByDb, orderName} from "../actions";
+import { getPokemons , filterPokemonByType, filterPokemonByDb, orderName, getTypes} from "../../actions";
 import {Link} from "react-router-dom"
-import PokeCard from "./Card";
-import Paginado from "./Paginado";
-import SearchBar from "./SearchBar";
+import PokeCard from "../Card/Card";
+import Paginado from "../Paginado/Paginado";
+import SearchBar from "../SearchBar/SearchBar";
 export default function Home(){
     const dispatch =  useDispatch()
     const allPokemons = useSelector((state)=>state.pokemons)
+    const types = useSelector((state=> state.types))
     const [order, setOrder] = useState("")
     const [currentPage, setcurrentPage] = useState(1);
     const [pokemonPerPage, setpokemonPerPage] = useState(12);
@@ -21,6 +22,7 @@ export default function Home(){
 
     useEffect(()=>{
         dispatch(getPokemons())
+        dispatch(getTypes())
     }, [dispatch])
 
     function handleClick(e){
@@ -50,6 +52,8 @@ export default function Home(){
 
     return(
         <div>
+             { allPokemons.length > 0 ?
+             <div>
             <Link to= "/Pokemon">Crear Pokemon</Link>
             <h1>Pokemon</h1>
             <button onClick={e=>{handleClick(e)}}>
@@ -70,26 +74,9 @@ export default function Home(){
                 </select>
                 <select onChange={e => {handleFilterType(e)}} name="" id="">
                     <option value="todos">todos</option>
-                    <option value="normal">normal</option>
-                    <option value="fighting">fighting</option>
-                    <option value="flying">flying</option>
-                    <option value="poison">poison</option>
-                    <option value="ground">ground</option>
-                    <option value="rock">rock</option>
-                    <option value="bug">bug</option>
-                    <option value="ghost">ghost</option>
-                    <option value="steel">steel</option>
-                    <option value="water">water</option>
-                    <option value="fire">fire</option>
-                    <option value="grass">grass</option>
-                    <option value="electric">electric</option>
-                    <option value="ice">ice</option>
-                    <option value="psychic">psychic</option>
-                    <option value="dragon">dragon</option>
-                    <option value="dark">dark</option>
-                    <option value="fairy">fairy</option>
-                    <option value="unknown">unknown</option>
-                    <option value="shadow">shadow</option>
+                        { types.map((e) => (            
+                            <option value = {e.name}>{e.name}</option>
+                        ) )}
                 </select>
                 <SearchBar></SearchBar>
               <Paginado
@@ -104,12 +91,19 @@ export default function Home(){
                             <Link to={"/home/" }>
                             <PokeCard name={ e.name} types={e.types} attack={e.attack} id={e.id}  img={e.img} />
                             </Link>
+                            {console.log(types)}
                         </fragment>
                     )
                 })
-                }
-            </div>
-        </div>
+            }
+                </div>
+                </div>:
+                <div>
+                <img src="https://www.gifsanimados.org/data/media/1446/pokemon-imagen-animada-0082.gif" alt="Funny image"/> 
+                <h2>Loading...</h2>
+                </div>
+ 
+        }   
+        </div>     
     )
-
 }

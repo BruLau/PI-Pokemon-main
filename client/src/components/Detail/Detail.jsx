@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux"
-import { detail } from "../actions";
+import { detail } from "../../actions";
 
 export default function Detail(props){
     const dispatch = useDispatch()
@@ -13,6 +13,9 @@ export default function Detail(props){
 
     const pokemon = useSelector((state)=> state.detail)
 
+    function handleBack(e){
+        pokemon.pop()
+    }
     return (
         <div>
             {
@@ -26,11 +29,16 @@ export default function Detail(props){
                     <h3>Altura: {pokemon[0].height}</h3>
                     <h3>Peso: {pokemon[0].weight}</h3>
                     <h4>Tipos: {pokemon[0].types.map(e=>e.name+ " ")} </h4>
+                    {console.log(pokemon)}
                 </div>:
-                <p>Loading...</p>
+                <div>
+                <img src="https://www.gifsanimados.org/data/media/1446/pokemon-imagen-animada-0082.gif" alt="Funny image"/> 
+                <h2>Loading...</h2>
+                
+                </div>
             }
             <Link to= "/home">
-                <button>Volver a inicio</button>
+                <button onClick={handleBack}>Volver a inicio</button>
             </Link>
         </div>
     )
