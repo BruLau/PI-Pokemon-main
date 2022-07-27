@@ -60,8 +60,8 @@ export default function Home(){
              <div className={styles.pokedex} >
                 <img src={landingImg} className={styles.image} alt="no encontre la imagen" ></img>
             <Link to= "/Pokemon">Crear Pokemon</Link>
-            <h1>Pokemon</h1>
-            <button onClick={e=>{handleClick(e)}}>
+            <h1 className={styles.titulo} >Pokemon</h1>
+            <button className={styles.recargar} onClick={e=>{handleClick(e)}}>
                 Volver a cargar todos los pokemons
             </button>
             <div className={styles.bgfijo}>
@@ -102,7 +102,6 @@ export default function Home(){
                         <div className={styles.follow} >
                             <Link to={"/home/" }>
                             <PokeCard name={ e.name} types={e.types} attack={e.attack} id={e.id}  img={e.img} />
-                            
                             </Link>
                         </div>
                     )
