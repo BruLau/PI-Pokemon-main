@@ -6,6 +6,7 @@ import {Link} from "react-router-dom"
 import PokeCard from "../Card/Card";
 import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/SearchBar";
+import Loading from "../Loading/Loading";
 export default function Home(){
     const dispatch =  useDispatch()
     const allPokemons = useSelector((state)=>state.pokemons)
@@ -98,10 +99,9 @@ export default function Home(){
             }
                 </div>
                 </div>:
-                <div>
-                <img src="https://www.gifsanimados.org/data/media/1446/pokemon-imagen-animada-0082.gif" alt="Funny image"/> 
-                <h2>Loading...</h2>
-                </div>
+               
+                <Loading/>
+                
  
         }   
         </div>     

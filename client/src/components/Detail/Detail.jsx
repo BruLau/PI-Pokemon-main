@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux"
 import { detail } from "../../actions";
-
+import Loading from "../Loading/Loading";
 export default function Detail(props){
     const dispatch = useDispatch()
     useEffect(()=> {
@@ -31,11 +31,10 @@ export default function Detail(props){
                     <h4>Tipos: {pokemon[0].types.map(e=>e.name+ " ")} </h4>
                     {console.log(pokemon)}
                 </div>:
-                <div>
-                <img src="https://www.gifsanimados.org/data/media/1446/pokemon-imagen-animada-0082.gif" alt="Funny image"/> 
-                <h2>Loading...</h2>
+           
+                <Loading/>
                 
-                </div>
+               
             }
             <Link to= "/home">
                 <button onClick={handleBack}>Volver a inicio</button>
