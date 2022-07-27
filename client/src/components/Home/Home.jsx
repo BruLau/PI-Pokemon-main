@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import {landingImg} from "../imagenes/imagenes"
 import { useDispatch, useSelector} from "react-redux"
 import { getPokemons , filterPokemonByType, filterPokemonByDb, orderName, getTypes} from "../../actions";
 import {Link} from "react-router-dom"
@@ -54,33 +55,39 @@ export default function Home(){
 
     return(
         <div className={styles.bg}>
+            
              { allPokemons.length > 0 ?
              <div className={styles.pokedex} >
+                <img src={landingImg} className={styles.image} alt="no encontre la imagen" ></img>
             <Link to= "/Pokemon">Crear Pokemon</Link>
             <h1>Pokemon</h1>
             <button onClick={e=>{handleClick(e)}}>
                 Volver a cargar todos los pokemons
             </button>
             <div className={styles.bgfijo}>
+            <h3 className={styles.filtrarh1}>Filtrar por:</h3>
+                <div className={styles.filtro}>
                 
-                <select placeholder="buscar"  onChange={e => {handleSort(e)}} name="" id="">
+                <select placeholder="buscar" className={styles.ord} onChange={e => {handleSort(e)}} name="" id="">
                     <option value="ord">ordenar:</option>
                     <option value="asc">ascendente</option>
                     <option value="desc">descendente</option>
                     <option value="may">mayor ataque</option>
                     <option value="men">menos ataque</option>
                 </select>
-                <select onChange={e => {handleFilterDb(e)}} name="" id="">
+                <select className={styles.created} onChange={e => {handleFilterDb(e)}} name="" id="">
                     <option value="all">todos</option>
                     <option value="created">creados</option>
                     <option value="api">existente</option>
                 </select>
-                <select onChange={e => {handleFilterType(e)}} name="" id="">
+                <select className={styles.type} onChange={e => {handleFilterType(e)}} name="" id="">
                     <option value="todos">todos</option>
                         { types.map((e) => (            
                             <option value = {e.name}>{e.name}</option>
                         ) )}
                 </select>
+                </div>
+                <h3 className={styles.buscadorh1}>Buscador:</h3>
                 <div className={styles.buscador}>
                 <SearchBar></SearchBar>
                 </div>
@@ -95,6 +102,7 @@ export default function Home(){
                         <div className={styles.follow} >
                             <Link to={"/home/" }>
                             <PokeCard name={ e.name} types={e.types} attack={e.attack} id={e.id}  img={e.img} />
+                            
                             </Link>
                         </div>
                     )

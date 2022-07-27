@@ -1,0 +1,44 @@
+.paginado {
+	margin:20px 0;
+}
+
+.paginado ul {
+	list-style:none;
+	text-align: center;
+    
+}
+.borde{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    position: absolute;
+    top: 93%;
+    left: 43%;
+}
+
+.paginado ul li {
+	display:inline-block;
+	margin-right:0px;
+}
+
+.paginado ul li a {
+	display:block;
+    
+	padding:10px 20px;
+	color:#fff;
+	background:transparent;
+	text-decoration: none;
+}
+
+.paginado ul li a:hover {
+	background:rgb(255, 0, 0, 0.5);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: black;
+}
+
+.paginado ul li .active {
+	background:#037E8C;
+	font-weight:bold;
+}

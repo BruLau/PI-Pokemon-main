@@ -1,4 +1,6 @@
 import React from "react";
+import styles from './Paginado.module.css'
+
 export default function Paginado ({ pokemonsPerPage, allPokemons, paginado }){
     const numeroPagina =[]
 
@@ -8,14 +10,21 @@ export default function Paginado ({ pokemonsPerPage, allPokemons, paginado }){
     }
 
     return(
-        <nav>
-            <ul className="paginado">
+        <nav className={styles.paginado}>
+            
+            <ul >
+            <div className={styles.borde}>
                {numeroPagina && 
                 numeroPagina.map(numero =>(
-                    <li className="numero" key={numero} >
+                    
+                    <li  key={numero} >
+                    
                     <a onClick={()=> paginado(numero)}>{numero}</a>
+                    
                     </li>
+                   
                 ))} 
+                </div>
             </ul>
         </nav>
     )
