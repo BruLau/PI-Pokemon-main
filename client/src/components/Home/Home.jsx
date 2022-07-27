@@ -4,6 +4,7 @@ import { useDispatch, useSelector} from "react-redux"
 import { getPokemons , filterPokemonByType, filterPokemonByDb, orderName, getTypes} from "../../actions";
 import {Link} from "react-router-dom"
 import PokeCard from "../Card/Card";
+import styles from './Home.module.css'
 import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/SearchBar";
 import Loading from "../Loading/Loading";
@@ -52,15 +53,16 @@ export default function Home(){
     }
 
     return(
-        <div>
+        <div className={styles.bg}>
              { allPokemons.length > 0 ?
-             <div>
+             <div className={styles.pokedex} >
             <Link to= "/Pokemon">Crear Pokemon</Link>
             <h1>Pokemon</h1>
             <button onClick={e=>{handleClick(e)}}>
                 Volver a cargar todos los pokemons
             </button>
-            <div>
+            <div className={styles.bgfijo}>
+                
                 <select placeholder="buscar"  onChange={e => {handleSort(e)}} name="" id="">
                     <option value="ord">ordenar:</option>
                     <option value="asc">ascendente</option>
@@ -79,7 +81,9 @@ export default function Home(){
                             <option value = {e.name}>{e.name}</option>
                         ) )}
                 </select>
+                <div className={styles.buscador}>
                 <SearchBar></SearchBar>
+                </div>
               <Paginado
                 pokemonsPerPage={pokemonPerPage}
                 allPokemons={allPokemons.length}
@@ -88,12 +92,11 @@ export default function Home(){
               
                 { currentPokemon?.map((e)=>{
                     return(
-                        <fragment>
+                        <div className={styles.follow} >
                             <Link to={"/home/" }>
                             <PokeCard name={ e.name} types={e.types} attack={e.attack} id={e.id}  img={e.img} />
                             </Link>
-                            {console.log(types)}
-                        </fragment>
+                        </div>
                     )
                 })
             }

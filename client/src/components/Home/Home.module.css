@@ -1,0 +1,32 @@
+.bg{
+    background:url('../imagenes/back1.png') no-repeat center center fixed;
+    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+}
+
+.pokedex{
+    align-items: center;
+    background-color: rgb(255, 0, 0, 0.4);
+    border-color: black;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 10px;
+    width: 80%;
+    height: 90%;
+    position: absolute;
+    top: 5%;
+    left: 10%;
+}
+.follow{
+    display: inline-block;
+}
+.buscador{
+    position: absolute;
+    display: inline-block;
+    top: 5%;
+    left: 72%;
+}
