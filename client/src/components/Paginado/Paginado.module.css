@@ -24,7 +24,7 @@
 
 .paginado ul li a {
 	display:block;
-    
+    align-content: center;
 	padding:10px 20px;
 	color:#fff;
 	background:transparent;

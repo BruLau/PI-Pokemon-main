@@ -58,8 +58,7 @@
 .titulo{
     opacity: 0;
     position: relative;
-    top: 31%;
-    left: 0%;
+    height: 102px;
 }
 .ord {
     display: inline-block;
