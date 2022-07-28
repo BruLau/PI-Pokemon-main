@@ -6,6 +6,7 @@
     position: fixed;
     height: 100vh;
     width: 100vw;
+    text-decoration: none;
 }
 .image{
     position: absolute;
@@ -15,7 +16,8 @@
 .filtrarh1{
     position: absolute;
     top: 8%;
-    left: 79%;
+    left: 77%;
+    font-family: 'Hammersmith One', sans-serif;
 }
 
 .filtro{
@@ -38,6 +40,7 @@
     border: 1px solid #aaa;
     box-shadow: 0 1px 0 1px rgba(0,0,0,.03);
     border-radius: .3em;
+    text-decoration: none;
 }
 .created{
     display: inline-block;
@@ -89,10 +92,12 @@
     position: absolute;
     top: 5%;
     left: 10%;
+    text-decoration: none;
 }
 .follow{
     display: inline-block;
-    
+    height: px;
+    text-decoration: none;
 }
 .buscador{
     position: absolute;
@@ -104,18 +109,41 @@
     position: absolute;
     top: 0%;
     left: 79%;
+    font-family: 'Hammersmith One', sans-serif;
 }
+.crear{
+    position: absolute;
+    top: 92%;
+    left: 80%;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: transparent;
+    color: black;
+    font-size: larger;
+    font-family: 'Hammersmith One', sans-serif;
+    height: 40px;
+}
+
+.crear:hover{
+    background:rgb(255, 0, 0, 0.5);
+    color: white;
+}
+
+
 
 .recargar{
     position: absolute;
-    top: 97%;
+    top: 95%;
     left: 43.6%;
     border-radius: 8px;
     border-style: solid;
     border-width: 1px;
     background-color: transparent;
-    color: white;
+    color: black;
+    font-family: 'Hammersmith One', sans-serif;
 }
 .recargar:hover{
     background:rgb(255, 0, 0, 0.5);
+    color: white;
 }

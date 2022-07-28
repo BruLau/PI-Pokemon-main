@@ -1,0 +1,39 @@
+.card:hover{
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    width: 230px;
+    background-color:  rgb(255, 0, 0, 0.4);
+}
+.card:visited{
+    color: black;
+}
+.navlink{
+    color: transparent;
+}
+
+.card {
+    color:black;
+    border-color: rgb(0, 0, 0, 0.4);
+    border-style: solid;
+    border-width: 0px;
+    border-radius: 10px;
+    width: 230px;
+    text-decoration: none;
+    
+}
+.img{
+    width:200px ;
+    height :200px;
+}
+
+.h5{
+    font-family: 'Hammersmith One', sans-serif;
+    position: relative;
+    top:0px;
+    
+}
+.h3{
+    font-family: 'Hammersmith One', sans-serif;
+}

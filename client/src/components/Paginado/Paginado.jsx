@@ -10,8 +10,11 @@ export default function Paginado ({ pokemonsPerPage, allPokemons, paginado }){
     }
 
     return(
-        <nav className={styles.paginado}>
-            
+        <div className={styles.paginado}>
+        <nav >
+            <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+<link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet"></link> 
             <ul >
             <div className={styles.borde}>
                {numeroPagina && 
@@ -27,5 +30,6 @@ export default function Paginado ({ pokemonsPerPage, allPokemons, paginado }){
                 </div>
             </ul>
         </nav>
+        </div>
     )
 }
