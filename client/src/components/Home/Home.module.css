@@ -19,6 +19,11 @@
     left: 77%;
     font-family: 'Hammersmith One', sans-serif;
 }
+.paginado{
+    display: inline;
+    align-content: left;
+    justify-content: left;
+}
 
 .filtro{
     position: absolute;
@@ -98,6 +103,10 @@
     display: inline-block;
     height: px;
     text-decoration: none;
+}
+.cards{
+    display: inline-block;
+    height: 610px;
 }
 .buscador{
     position: absolute;

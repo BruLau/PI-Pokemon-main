@@ -96,18 +96,22 @@ export default function Home(){
                 <SearchBar></SearchBar>
                 </div>
               
-              
+                <div className={styles.cards}>
                 { currentPokemon?.map((e)=>{
                     return(
+                        
                         <div className={styles.follow} >
                             <Link to={"/home/" }>
                             <PokeCard name={ e.name} types={e.types} attack={e.attack} id={e.id}  img={e.img} />
                             </Link>
                         </div>
+                        
                     )
                 })
+
             }
-            <div>
+            </div>
+            <div className={styles.paginado}>
             <Paginado
                 pokemonsPerPage={pokemonPerPage}
                 allPokemons={allPokemons.length}

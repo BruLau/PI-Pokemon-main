@@ -19,11 +19,16 @@
    
 }
 .paginado{
-    position: absolute;
-   top: 87%;
-   left:50%;
-   margin-left: -141.7px;
+    position:static;
+    
+   
 }
+.navpaginado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .paginado ul li {
 	display:inline-block;

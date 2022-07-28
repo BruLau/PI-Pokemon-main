@@ -2,16 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux"
-import {gif, cagandoimg, landingImg} from "../imagenes/imagenes"
+import { landingImg} from "../imagenes/imagenes"
 import styles from './Detail.module.css'
 import { detail } from "../../actions";
-import Loading from "../Loading/Loading";
+import PokedexLoading from "../PokedexLoading/PokedexLoading";
 export default function Detail(props){
     const dispatch = useDispatch()
     useEffect(()=> {
         dispatch(detail(props.match.params.id))
         console.log(props.match.params.id)
     },[dispatch])
+    
 
     const pokemon = useSelector((state)=> state.detail)
 
@@ -33,11 +34,11 @@ export default function Detail(props){
                     <h1>{pokemon[0].name}</h1>
                     <img src ={pokemon[0].img}  className={styles.pokeimage} alt="" width="300px" height="300px"></img>
                     <div className={styles.info}> 
-                    <h3>Ataque: {pokemon[0].attack}</h3>
+                    <h3>Ataque: {pokemon[0].attack} </h3>
                     <h3>Defensa: {pokemon[0].defense}</h3>
                     <h3>Velocidad: {pokemon[0].velocity}</h3>
-                    <h3>Altura: {pokemon[0].height}</h3>
-                    <h3>Peso: {pokemon[0].weight}</h3>
+                    <h3>Altura: {(pokemon[0].height)/10}m</h3>
+                    <h3>Peso: {pokemon[0].weight}g</h3>
                     <h3>Tipos: {pokemon[0].types.map(e=>e.name+ " ")} </h3>
                     </div>
                     {console.log(pokemon)}
@@ -49,7 +50,7 @@ export default function Detail(props){
          
                 </div>:
                 <div>
-                <Loading></Loading>
+                <PokedexLoading></PokedexLoading>
                      </div>
             }
           

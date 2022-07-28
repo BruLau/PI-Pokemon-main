@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link,useHistory } from "react-router-dom";
 import { postPokemon, getTypes } from "../../actions";
 import { useDispatch, useSelector} from "react-redux"
+import styles from './PokemonCreate.module.css'
  import validate from "./validation";     
 
 
@@ -97,7 +98,7 @@ return(
     <div>
     <label>Nombre:</label>
     <input type="text" value={input.name} name ="name" onChange={handleChange}/>
-        <p className='error-input'>{errors.name}</p>
+    <p className='error-input'>{errors.name}</p>
     </div>
     <div>
     <label>Vida:</label>
