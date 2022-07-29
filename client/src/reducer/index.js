@@ -90,6 +90,7 @@ case "GET_POKEMONS":
             
             if(Array.isArray(validSearch))
             {
+               
             return{
                 ...state,
                 pokemons: action.payload

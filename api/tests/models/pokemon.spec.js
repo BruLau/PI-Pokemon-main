@@ -9,14 +9,19 @@ describe('Pokemon model', () => {
   describe('Validators', () => {
     beforeEach(() => Pokemon.sync({ force: true }));
     describe('name', () => {
-      it('should throw an error if name is null', (done) => {
+      it('Arroja un error si el nombre es nulo', (done) => {
         Pokemon.create({})
           .then(() => done(new Error('It requires a valid name')))
           .catch(() => done());
       });
-      it('should work when its a valid name', () => {
+      it('Debería funcionar cuando es un nombre válido', () => {
         Pokemon.create({ name: 'Pikachu' });
       });
-    });
+      it('no debería funcionar cuando no hay nombre', () => {
+        Pokemon.create({ attack: '76' })
+        .then(() => done(new Error('Requiere un nombre.')))
+        .catch(() => done());
+      });
+    });    
   });
 });

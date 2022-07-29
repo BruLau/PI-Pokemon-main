@@ -157,7 +157,7 @@ return(
     </div>
     <div className= {styles.a}>
     <h3>Imagen:</h3>
-    <input className={styles.ord} type="text" value={input.img} name ="img" onChange={handleChange}/>
+    <input className={styles.ord} placeholder="URL imagen" type="text" value={input.img} name ="img" onChange={handleChange}/>
     
     </div>
     </div>
