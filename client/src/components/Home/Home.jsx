@@ -73,18 +73,20 @@ export default function Home(){
                 <div className={styles.filtro}>
                 
                 <select placeholder="buscar" className={styles.ord} onChange={e => {handleSort(e)}} name="" id="">
-                    <option value="ord">ordenar:</option>
+                    <option value="ord" disabled selected>Ordenar:</option>
                     <option value="asc">ascendente</option>
                     <option value="desc">descendente</option>
                     <option value="may">mayor ataque</option>
                     <option value="men">menos ataque</option>
                 </select>
                 <select className={styles.created} onChange={e => {handleFilterDb(e)}} name="" id="">
+                    <option value="all" disabled selected>Por creación:</option>
                     <option value="all">todos</option>
                     <option value="created">creados</option>
                     <option value="api">existente</option>
                 </select>
                 <select className={styles.type} onChange={e => {handleFilterType(e)}} name="" id="">
+                    <option value="todos" disabled selected>Por tipo:</option>
                     <option value="todos">todos</option>
                         { types.map((e) => (            
                             <option value = {e.name}>{e.name}</option>
