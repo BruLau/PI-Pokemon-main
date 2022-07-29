@@ -118,6 +118,7 @@ export default function Home(){
                 paginado={paginado}
               />
                 </div>
+                
                 </div>
                 </div>:
                
@@ -125,6 +126,7 @@ export default function Home(){
                 
  
         }   
+       
         </div>     
     )
 }

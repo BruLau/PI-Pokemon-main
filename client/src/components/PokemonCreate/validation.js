@@ -14,7 +14,7 @@ export default function validate (input)
             errors.name ="El nombre solo puede contener letras"
         }
         else if (!input.health ) {
-            errors.health = "Debes completar este campo";
+            errors.health = "Debes completar el campo ¨vida¨";
         }
         else if(parseInt(input.health) < 1){
             errors.health = "Debe ser mayor a 1";
@@ -52,11 +52,16 @@ export default function validate (input)
         else if(!input.img){
             errors.img = "Se requiere una URL"
         }
+       
         else if(!validateUrl.test(input.img)){
             errors.img = "Debe ser una URL valida ";
         }
-
-
+        else if(input.type.length===0){
+        
+            errors.type= "Debe seleccionar un tipo"
+        }
+       
+       
 
         return errors
     }

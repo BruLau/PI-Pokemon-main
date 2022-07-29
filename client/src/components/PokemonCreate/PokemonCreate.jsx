@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link,useHistory } from "react-router-dom";
 import { postPokemon, getTypes } from "../../actions";
 import { useDispatch, useSelector} from "react-redux"
+import {landingImg} from "../imagenes/imagenes"
 import styles from './PokemonCreate.module.css'
  import validate from "./validation";     
 
@@ -24,7 +25,6 @@ const [errors, setErrors] = useState({})
     img: ""
     })
 
-    
     function handleSubmit(e){
         e.preventDefault()
         if (
@@ -36,7 +36,8 @@ const [errors, setErrors] = useState({})
             !errors.height &&
             !errors.weight &&
             !errors.img  &&
-            input.name !== ""
+            input.name !== "" &&
+            input.type[0] !== undefined
         ) {
         
         
@@ -68,21 +69,34 @@ const [errors, setErrors] = useState({})
             [e.target.name] : e.target.value
         }))
     }
+    var valid=0
     function handleSelect(e){
+     
         if(input.type.length < 2)
         {
+            valid = valid + 1
             setInput({
                 ...input,
                type: [...input.type, e.target.value]
             })
+            setErrors(validate({
+                ...input,
+                type: [...input.type, e.target.value]
+            }))
         }
         
     }
     function handleDelete(e){
+        valid = valid - 1
         setInput({
             ...input,
             type: input.type.filter(a=>a!==e)
         })
+        setErrors(validate({
+            ...input,
+            type: input.type.filter(a=>a!==e)
+        }))
+        
     }
     useEffect(()=> {
         dispatch(getTypes())
@@ -90,71 +104,111 @@ const [errors, setErrors] = useState({})
 
 
 return(
-    <div>
-       { console.log(types)}
-        <Link to= "/home"><button>Volver a inicio</button></Link>
-        <h1>Crea tu propio Pokemon</h1>
-<form onSubmit={(e)=>handleSubmit(e)}>
-    <div>
-    <label>Nombre:</label>
-    <input type="text" value={input.name} name ="name" onChange={handleChange}/>
-    <p className='error-input'>{errors.name}</p>
+    <div  className={styles.bg}>
+      
+        
+      
+<form onSubmit={(e)=>handleSubmit(e)} className={styles.pokedex}>
+
+<div className={styles.glass}>
+<h1>Crea tu propio Pokemon</h1>
+<link rel="preconnect" href="https://fonts.googleapis.com"></link>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+<link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet"></link>
+<img src={landingImg} className={styles.image} alt="no encontre la imagen" ></img>
+<div className={styles.c1}>
+    <div className={styles.a}>
+    <h3>Nombre: </h3>
+    <input className={styles.ord} type="text" value={input.name} name ="name" onChange={handleChange}/>
+   
     </div>
-    <div>
-    <label>Vida:</label>
-    <input type="number" value={input.health} onChange={handleChange} name ="health" />
-    <p className='error-input'>{errors.health}</p>
+    <div className={styles.a}>
+    <h3>Vida:</h3>
+    <input className={styles.ord} type="number" value={input.health} onChange={handleChange} name ="health" />
+    
     
     </div>
-    <div>
-    <label>Ataque:</label>
-    <input type="number" value={input.attack} onChange={handleChange} name ="attack" />
-    <p className='error-input'>{errors.attack}</p>
+    <div className={styles.a}>
+    <h3>Ataque: </h3>
+    <input className={styles.ord} type="number" value={input.attack} onChange={handleChange} name ="attack" />
+    
     </div>
-    <div>
-    <label>Defensa:</label>
-    <input type="number" value={input.defense} onChange={handleChange} name ="defense" />
-    <p className='error-input'>{errors.defense}</p>
+    <div className={styles.a}>
+    <h3>Defensa:</h3>
+    <input className={styles.ord} type="number" value={input.defense} onChange={handleChange} name ="defense" />
+    
     </div>
-    <div>
-    <label>Velocidad:</label>
-    <input type="number" value={input.velocity} onChange={handleChange} name ="velocity" />
-    <p className='error-input'>{errors.velocity}</p>
+</div>
+<div className={styles.c2}>
+    <div className={styles.a}>
+    <h3>Velocidad:</h3>
+    <input className={styles.ord} type="number" value={input.velocity} onChange={handleChange} name ="velocity" />
+    
     </div>
-    <div>
-    <label>Altura:</label>
-    <input type="number" value={input.height} onChange={handleChange} name ="height" />
-    <p className='error-input'>{errors.height}</p>
+    <div className={styles.a}>
+    <h3>Altura:</h3>
+    <input className={styles.ord} type="number" value={input.height} onChange={handleChange} name ="height" />
+   
     </div>
-    <div>
-    <label>Peso:</label>
-    <input type="number" value={input.weight} onChange={handleChange} name ="weight" />
-    <p className='error-input'>{errors.weight}</p>
+    <div className= {styles.a}>
+    <h3>Peso:</h3>
+    <input className={styles.ord} type="number" value={input.weight} onChange={handleChange} name ="weight" />
+    
     </div>
-    <div>
-    <select onChange={handleSelect}>
+    <div className= {styles.a}>
+    <h3>Imagen:</h3>
+    <input className={styles.ord} type="text" value={input.img} name ="img" onChange={handleChange}/>
+    
+    </div>
+    </div>
+   <div>
+    <div className={styles.submit} >
+    <div className={styles.types}> 
+    
+    <select onChange={handleSelect} className={styles.ord}>
+   
         {types.map((e) => (            
             <option value = {e.name}>{e.name}</option>
         ) )}
+       
     </select>
     </div>
-    <div>
-    <label>Imagen:</label>
-    <input type="text" value={input.img} name ="img" onChange={handleChange}/>
-    <p className='error-input'>{errors.img}</p>
-    </div>
-    
-<button type="submit"  >Crear Pokemon</button>
-</form>
+    <h4 className={styles.h4type}>Selecciona el tipo de pokemon:</h4>
+    <h5 className={styles.h5type}>Recuerda que solo puedes elegir 2 tipos</h5>
+    <button type="submit"  className={styles.button}>Crear Pokemon</button>
+<Link to= "/home"><button className={styles.button1}>Volver a inicio</button></Link>
 
+
+</div>
+
+</div>
+{errors ?
+
+<div >
+<p className={styles.errors}>{errors.name}</p>
+<p className={styles.errors}>{errors.health}</p>
+<p className={styles.errors}>{errors.defense}</p>
+<p className={styles.errors}>{errors.attack}</p>
+<p className={styles.errors}>{errors.img}</p>
+<p className={styles.errors}>{errors.velocity}</p>
+<p className={styles.errors}>{errors.height}</p>
+<p className={styles.errors}>{errors.weight}</p>
+<p className={styles.errors}>{errors.type}</p>
+</div>:
+<div className={styles.errors1}></div>
+}
+
+</div>
+</form>
+<div className={styles.classtype}>
 <ul><li>{input.type.map(e=>
-        <div>
+        <div className={styles.quitcard}>
             <p>{e}</p>
-            <button onClick={()=>handleDelete(e)}>x</button>
+            <button className={styles.button2} onClick={()=>handleDelete(e)}>x</button>
         </div> )}            
         </li></ul>
-
-
+</div>
+        
     </div>
 )
 
