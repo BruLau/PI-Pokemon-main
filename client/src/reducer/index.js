@@ -87,10 +87,8 @@ case "GET_POKEMONS":
               
         case "SEARCH":
             let validSearch = action.payload
-            
             if(Array.isArray(validSearch))
             {
-               
             return{
                 ...state,
                 pokemons: action.payload

@@ -36,6 +36,7 @@ export default function Detail(props){
                     <div className={styles.info}> 
                     <h3>Ataque: {pokemon[0].attack} </h3>
                     <h3>Defensa: {pokemon[0].defense}</h3>
+                    <h3>Vida: {pokemon[0].health}</h3>
                     <h3>Velocidad: {pokemon[0].velocity}</h3>
                     <h3>Altura: {(pokemon[0].height)/10}m</h3>
                     <h3>Peso: {pokemon[0].weight}g</h3>

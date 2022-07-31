@@ -120,7 +120,7 @@ return(
     <div className={styles.a}>
     <h3>Nombre: </h3>
     <input className={styles.ord} type="text" value={input.name} name ="name" onChange={handleChange}/>
-   
+   {console.log(input.type)}
     </div>
     <div className={styles.a}>
     <h3>Vida:</h3>

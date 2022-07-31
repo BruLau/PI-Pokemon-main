@@ -95,7 +95,6 @@ export default function Home(){
                 </div>
                 <h3 className={styles.buscadorh1}>Buscador:</h3>
                 <div className={styles.buscador}>
-                    
                 <SearchBar></SearchBar>
                 </div>
               
