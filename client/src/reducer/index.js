@@ -26,9 +26,9 @@ case "GET_POKEMONS":
     case "FILTER_BY_DB":
         let filterDb = state.allPokemons;
         let filtroDb 
-        if(action.payload === 'created'){filtroDb = filterDb.filter(e=> e.createdInDb) }
+        if(action.payload === 'created'){filtroDb = filterDb.filter(e=> e.createdInDb && e.name !== "poketest") }
         else if(action.payload === 'api'){ filtroDb = filterDb.filter(e=> !e.createdInDb)}
-        else if(action.payload === 'all'){ filtroDb = state.allPokemons}
+        else if(action.payload === 'all'){ filtroDb = filterDb.filter(e=> e.name !== "poketest")}
         return{
             ...state,
             pokemons: filtroDb

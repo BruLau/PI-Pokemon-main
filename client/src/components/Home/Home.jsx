@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useEffect, useState } from "react";
 import {landingImg} from "../imagenes/imagenes"
 import { useDispatch, useSelector} from "react-redux"
@@ -80,13 +79,13 @@ export default function Home(){
                     <option value="men">menos ataque</option>
                 </select>
                 <select className={styles.created} onChange={e => {handleFilterDb(e)}} name="" id="">
-                    <option value="all" disabled selected>Por creación:</option>
+                    <option value="all" disabled selected>Creación:</option>
                     <option value="all">todos</option>
                     <option value="created">creados</option>
                     <option value="api">existente</option>
                 </select>
                 <select className={styles.type} onChange={e => {handleFilterType(e)}} name="" id="">
-                    <option value="todos" disabled selected>Por tipo:</option>
+                    <option value="todos" disabled selected>Tipo:</option>
                     <option value="todos">todos</option>
                         { types.map((e) => (            
                             <option value = {e.name}>{e.name}</option>
@@ -103,9 +102,11 @@ export default function Home(){
                     return(
                         
                         <div className={styles.follow} >
+                            {e.name !== "poketest" ?
                             <Link to={"/home/" }>
                             <PokeCard name={ e.name} types={e.types} attack={e.attack} id={e.id}  img={e.img} />
-                            </Link>
+                            </Link>:
+                            <div></div>}
                         </div>
                         
                     )

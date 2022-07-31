@@ -6,10 +6,11 @@ import { useDispatch, useSelector} from "react-redux"
 import {landingImg} from "../imagenes/imagenes"
 import styles from './PokemonCreate.module.css'
  import validate from "./validation";     
-
+ 
 
 export default function PokemonCreate(){
     const dispatch= useDispatch()
+    const allPokemons = useSelector((state)=>state.pokemons)
     const types = useSelector((state=> state.types))
 const history = useHistory()
 const [errors, setErrors] = useState({})
@@ -27,12 +28,17 @@ const [errors, setErrors] = useState({})
 
     function handleSubmit(e){
         e.preventDefault()
+        let verif = allPokemons.filter(e=> e.name === input.name)
+        if(verif[0] !== undefined){
+            alert("Ya existe un pokemon con ese nombre!!!") 
+        }
+        else{ 
         if (
             !errors.name &&
-            !errors.hp &&
+            !errors.health &&
             !errors.attack &&
             !errors.defense &&
-            !errors.speed &&
+            !errors.velocity &&
             !errors.height &&
             !errors.weight &&
             !errors.img  &&
@@ -57,7 +63,9 @@ const [errors, setErrors] = useState({})
         history.push("/home")
     }
     else{alert("Alguno de los campos es incorrecto")}
+   
     }
+}
 
     function handleChange(e){
         setInput({
