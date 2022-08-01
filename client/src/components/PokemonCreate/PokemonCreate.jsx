@@ -191,8 +191,9 @@ return(
 
 </div>
 {Object.entries(errors).length !== 0 ?
-
-<div >
+<div className={styles.contenedor}>
+<div className={styles.errores}>
+    
 <p className={errors.name ? styles.errors : styles.errors1}>{errors.name}</p>
 <p className={errors.health? styles.errors : styles.errors1}>{errors.health}</p>
 <p className={errors.defense ? styles.errors : styles.errors1}>{errors.defense}</p>
@@ -202,7 +203,7 @@ return(
 <p className={errors.height ? styles.errors : styles.errors1}>{errors.height}</p>
 <p className={errors.weight ? styles.errors : styles.errors1}>{errors.weight}</p>
 <p className={errors.type ? styles.errors : styles.errors1}>{errors.type}</p>
-</div>:
+</div></div>:
 <div className={styles.errors1}></div>
 }
 

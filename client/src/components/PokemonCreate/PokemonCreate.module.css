@@ -95,9 +95,7 @@
 }
 
 .errors{
-    position: absolute;
-    top: 73%;
-    left: 42%;
+  
 
     background:rgb(255, 0, 0, 0.5);
     border-radius: 8px;
@@ -105,8 +103,23 @@
     border-width: 1px;
     padding: 10px;
 }
+
+
+
 .errors1{
     display: none;
+}
+.contenedor{
+    position:relative;
+    top: 400px;
+    height: 90px;
+    width: 800px;
+}
+.errores{
+    display: flex ;
+    align-content: center;
+    justify-content: center;
+
 }
 
 .quitcard{
