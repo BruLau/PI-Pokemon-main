@@ -63,6 +63,7 @@ export default function Home(){
              <div className={styles.pokedex} >
                 <img src={landingImg} className={styles.image} alt="no encontre la imagen" ></img>
             <Link to= "/Pokemon"><button className={styles.crear}>Crea tu propio Pokemon!</button></Link>
+            <Link to= "/comparation"><button className={styles.compara}>Compara entre 2 pokemon!</button></Link>
             <h1 className={styles.titulo} >Pokemon</h1>
             <button className={styles.recargar} onClick={e=>{handleClick(e)}}>
                 Volver a cargar todos los pokemons

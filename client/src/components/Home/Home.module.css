@@ -138,6 +138,24 @@
     background:rgb(255, 0, 0, 0.5);
     color: white;
 }
+.compara{
+    position: absolute;
+    top: 92%;
+    left: 04%;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: transparent;
+    color: black;
+    font-size: larger;
+    font-family: 'Hammersmith One', sans-serif;
+    height: 40px;
+}
+
+.compara:hover{
+    background:rgb(255, 0, 0, 0.5);
+    color: white;
+}
 
 
 

@@ -10,9 +10,8 @@ export default function Detail(props){
     const dispatch = useDispatch()
     useEffect(()=> {
         dispatch(detail(props.match.params.id))
-        console.log(props.match.params.id)
+        
     },[dispatch])
-    
 
     const pokemon = useSelector((state)=> state.detail)
 
@@ -42,10 +41,9 @@ export default function Detail(props){
                     <h3>Peso: {pokemon[0].weight}g</h3>
                     <h3>Tipos: {pokemon[0].types.map(e=>e.name+ " ")} </h3>
                     </div>
-                    {console.log(pokemon)}
                     <Link to= "/home">
-                <button className={styles.button} onClick={handleBack}>Volver a inicio</button>
-            </Link>
+                    <button className={styles.button} onClick={handleBack}>Volver a inicio</button>
+                    </Link>
           </div>
           </div>
          
