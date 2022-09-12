@@ -20,7 +20,7 @@ const agent = session(app);
     it('POST agrega un nuevo pokemon', (done) => {
       agent.post('/pokemons')
       .send({
-        name: 'Zaraza',
+        name: 'poketest',
         hp: '100',
         attack: '120',
         defense: '55',

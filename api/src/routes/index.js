@@ -7,6 +7,8 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+
+
 const getApiInfo = async () => {
     try {
         let url = 'https://pokeapi.co/api/v2/pokemon/';
@@ -51,6 +53,7 @@ const getApiInfo = async () => {
     };
 };
 
+
 const getDbInfo = async () => {
     return await Pokemon.findAll({
         include: {
@@ -63,12 +66,14 @@ const getDbInfo = async () => {
     })
 }
 
+
 const getAllPokemons = async () => {
     const apiInfo = await getApiInfo();
     const dbInfo = await getDbInfo();
     const infoTotal = apiInfo.concat(dbInfo)
     return infoTotal;
 }
+
 
 router.get("/pokemons", async (req,res) =>{
     const name= req.query.name
@@ -83,6 +88,8 @@ router.get("/pokemons", async (req,res) =>{
         res.status(200).send(pokemonTotal)
     }
 })
+
+
 router.get("/types", async (req,res) =>{
     const typeApi = await axios.get("https://pokeapi.co/api/v2/type")
     typeApi.data.results.map(e=> {
@@ -93,6 +100,7 @@ router.get("/types", async (req,res) =>{
 const allTypes = await Types.findAll()
 res.send(allTypes)
 })
+
 
 router.post("/pokemons", async (req,res) =>{
    
@@ -120,6 +128,7 @@ router.post("/pokemons", async (req,res) =>{
 if(!name) return res.status(404).send('Falta el nombre');
 
 })
+
 
 router.get("/pokemons/:id", async (req,res) =>{
     let {id}= req.params

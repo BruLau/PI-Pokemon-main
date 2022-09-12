@@ -10,7 +10,6 @@ export default function Detail(props){
     const dispatch = useDispatch()
     useEffect(()=> {
         dispatch(detail(props.match.params.id))
-        
     },[dispatch])
 
     const pokemon = useSelector((state)=> state.detail)

@@ -60,6 +60,7 @@ export default function validate (input)
         
             errors.type= "Debe seleccionar un tipo"
         }
+        
        
        
 

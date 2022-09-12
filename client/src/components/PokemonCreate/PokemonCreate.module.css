@@ -110,16 +110,18 @@
     display: none;
 }
 .contenedor{
-    position:relative;
-    top: 400px;
-    height: 90px;
-    width: 800px;
+    position: absolute;
+    top: 30%;
+    left: 71%;
+   width: 400px;
+ 
 }
 .errores{
     display: flex ;
     align-content: center;
     justify-content: center;
-
+    height: 100px;
+    
 }
 
 .quitcard{
