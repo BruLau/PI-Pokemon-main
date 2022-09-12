@@ -11,11 +11,6 @@
     margin-top: 15vh;
     
 }
-.imagecredit{
-    width: 13vw;
-    height: 4vh;
-    margin-top: 35vh;
-}
 
 .imageintro{
     width: 10vw;
@@ -24,23 +19,96 @@
    
 }
 
-
-
-.intro{
-   
-    width: 15vw;
-    height: 15vh;
-    background: url('../imagenes/Landing-ingreso.png') no-repeat center center fixed;
-    background-size: 220px;
-}
-.intro:hover{
-    width: 15vw;
-    height: 15vh;
-    background: url('../imagenes/Landing-ingresohover.png') no-repeat center center fixed;
-    background-size: 220px;
-}
 .button{
     border: transparent;
     background-color: transparent;
 
+}
+
+
+
+
+
+@media(max-width:767px){
+    .image{
+        width: 90vw;
+        height: 23vh;
+        margin-top: 15vh;
+        
+    }
+    .imagecredit{
+        width: 40vw;
+        height: 4vh;
+        margin-top: 35vh;
+    }
+    .intro{
+   
+        width: 80vw;
+        height: 17vh;
+        background: url('../imagenes/Landing-ingreso.png') no-repeat center center fixed;
+        background-size: 220px;
+    }
+    .intro:hover{
+        width: 40vw;
+        height: 17vh;
+        background: url('../imagenes/Landing-ingresohover.png') no-repeat center center fixed;
+        background-size: 220px;
+    }
+}
+@media(min-width:767px) and (max-width:1023px){
+    .image{
+        width: 90vw;
+        height: 23vh;
+        margin-top: 15vh;
+        
+    }
+    .imagecredit{
+        width: 30vw;
+        height: 4vh;
+        margin-top: 35vh;
+    }
+    .intro{
+   
+        width: 40vw;
+        height: 17vh;
+        background: url('../imagenes/Landing-ingreso.png') no-repeat center center fixed;
+        background-size: 220px;
+    }
+    .intro:hover{
+        width: 40vw;
+        height: 15vh;
+        background: url('../imagenes/Landing-ingresohover.png') no-repeat center center fixed;
+        background-size: 220px;
+    }
+
+}
+
+@media(min-width:1023px) {
+
+    .image{
+        width: 40vw;
+        height: 23vh;
+        margin-top: 15vh;
+        
+    }
+    .intro{
+   
+        width: 21vw;
+        height: 18vh;
+        background: url('../imagenes/Landing-ingreso.png') no-repeat center center fixed;
+        background-size: 220px;
+    }
+    .intro:hover{
+        width: 16vw;
+        height: 18vh;
+        background: url('../imagenes/Landing-ingresohover.png') no-repeat center center fixed;
+        background-size: 220px;
+    }
+   
+    .imagecredit{
+        width: 17vw;
+        height: 4vh;
+        margin-top: 35vh;
+    }
+  
 }

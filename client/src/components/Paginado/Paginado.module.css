@@ -58,3 +58,16 @@
 	background:#037E8C;
 	font-weight:bold;
 }
+
+@media(max-width:500px){
+    .paginado ul li a {
+        display:block;
+        align-content: center;
+        padding:10px 10px;
+        color:black;
+        background:transparent;
+        text-decoration: none;
+        font-family: 'Hammersmith One', sans-serif;
+    }
+    
+}

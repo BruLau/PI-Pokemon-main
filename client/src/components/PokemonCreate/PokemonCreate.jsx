@@ -77,25 +77,60 @@ const [errors, setErrors] = useState({})
             [e.target.name] : e.target.value
         }))
     }
-    var valid=0
+    
     function handleSelect(e){
      
         if(input.type.length < 2)
         {
-            valid = valid + 1
-            setInput({
-                ...input,
-               type: [...input.type, e.target.value]
-            })
-            setErrors(validate({
-                ...input,
-                type: [...input.type, e.target.value]
-            }))
+            if(!input.type.includes(e.target.value))
+            {
+                setInput({
+                                ...input,
+                               type: [...input.type, e.target.value]
+                            })
+                            setErrors(validate({
+                                ...input,
+                                type: [...input.type, e.target.value]
+                            }))
+            }
+        
+
+            // if(input.type.length>0)
+            // {
+            // for(let i=0; i<input.type.length; i++ ){
+            //     if(input.type[i]!== e.target.value)
+            //     {
+            //         setInput({
+            //             ...input,
+            //            type: [...input.type, e.target.value]
+            //         })
+            //         setErrors(validate({
+            //             ...input,
+            //             type: [...input.type, e.target.value]
+            //         }))
+            //     }
+            //     else{
+            //         alert("Esta ingresando el mismo tipo")    
+            //     }
+               
+            // }
+            // }
+            // else{
+            //     setInput({
+            //         ...input,
+            //        type: [...input.type, e.target.value]
+            //     })
+            //     setErrors(validate({
+            //         ...input,
+            //         type: [...input.type, e.target.value]
+            //     }))
+            // }
+           
         }
         
     }
     function handleDelete(e){
-        valid = valid - 1
+       
         setInput({
             ...input,
             type: input.type.filter(a=>a!==e)
@@ -133,8 +168,6 @@ return(
     <div className={styles.a}>
     <h3>Vida:</h3>
     <input className={styles.ord} type="number" value={input.health} onChange={handleChange} name ="health" />
-    
-    
     </div>
     <div className={styles.a}>
     <h3>Ataque: </h3>
@@ -184,13 +217,7 @@ return(
     <h4 className={styles.h4type}>Selecciona el tipo de pokemon:</h4>
     <h5 className={styles.h5type}>Recuerda que solo puedes elegir 2 tipos</h5>
     <button type="submit"  className={styles.button}>Crear Pokemon</button>
-<Link to= "/home"><button className={styles.button1}>Volver a inicio</button></Link>
-
-
-</div>
-
-</div>
-{Object.entries(errors).length !== 0 ?
+    {Object.entries(errors).length !== 0 ?
 <div className={styles.contenedor}>
 <div className={styles.errores}>
     
@@ -206,6 +233,13 @@ return(
 </div></div>:
 <div className={styles.errors1}></div>
 }
+    <Link to= "/home"><button type="button" className={styles.button1}>Volver a inicio</button></Link>
+
+
+</div>
+
+</div>
+
 
 </div>
 </form>

@@ -15,7 +15,8 @@ export default function Home(){
     const types = useSelector((state=> state.types))
     const [order, setOrder] = useState("")
     const [currentPage, setcurrentPage] = useState(1);
-    const [pokemonPerPage, setpokemonPerPage] = useState(12);
+    const [pokemonPerPage, setpokemonPerPage] = useState(window.screen.width < 1725 ? window.screen.width < 1438 ? 8 :10 : 12);
+   
     const indexOfLastPokemon= currentPage * pokemonPerPage
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonPerPage
     const currentPokemon = allPokemons.slice(indexOfFirstPokemon, indexOfLastPokemon)
@@ -59,15 +60,21 @@ export default function Home(){
             <link rel="preconnect" href="https://fonts.googleapis.com"></link>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
 <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap" rel="stylesheet"></link>
+
              { allPokemons.length > 0 ?
+            
              <div className={styles.pokedex} >
-                <img src={landingImg} className={styles.image} alt="no encontre la imagen" ></img>
+                {console.log(window.screen.width)}
+                 <h1 className={styles.titulo} >Pokemon</h1>
+                 <img src={landingImg} className={styles.image} alt="no encontre la imagen" ></img>
+                <div  className={styles.botones}>
             <Link to= "/Pokemon"><button className={styles.crear}>Creá tu propio Pokemon!</button></Link>
             <Link to= "/comparation"><button className={styles.compara}>Compará entre 2 pokemon!</button></Link>
-            <h1 className={styles.titulo} >Pokemon</h1>
+           
             <button className={styles.recargar} onClick={e=>{handleClick(e)}}>
                 Volver a cargar todos los pokemons
             </button>
+            </div>
             <div className={styles.bgfijo}>
             <h3 className={styles.filtrarh1}>Filtrar/ordenar por:</h3>
                 <div className={styles.filtro}>
@@ -115,6 +122,7 @@ export default function Home(){
 
             }
             </div>
+            <div className={styles.cerca}>
             <div className={styles.paginado}>
             <Paginado
                 pokemonsPerPage={pokemonPerPage}
@@ -122,7 +130,7 @@ export default function Home(){
                 paginado={paginado}
               />
                 </div>
-                
+                </div>
                 </div>
                 </div>:
                

@@ -37,3 +37,25 @@
 .h3{
     font-family: 'Hammersmith One', sans-serif;
 }
+@media(max-width:767px){
+    .img{
+        width:100px ;
+        height :100px;
+     
+    }
+    .h5{
+       display: none;
+        
+    }
+    .h3{
+        display: none;
+    }
+}
+@media(min-width:768) and (max-width:1022px){
+    .img{
+        width:110px ;
+        height :110px;
+     
+    }
+}
+

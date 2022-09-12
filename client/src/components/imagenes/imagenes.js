@@ -5,6 +5,7 @@ import landingIntroHover from "./Landing-ingresohover.png"
 import background from "./background.png"
 import gif from "./cargandogif.gif"
 import cagandoimg from "./loading.png"
+import not from "./not.png"
 export {
     landingImg,
     landingIntro,
@@ -13,4 +14,5 @@ export {
     background,
     gif,
     cagandoimg,
+    not
 }
