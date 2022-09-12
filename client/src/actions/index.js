@@ -70,7 +70,7 @@ return async function (dispatch){
 export const searchBar= (payload) => {
     return async function (dispatch){
         try {
-            var json = await axios.get("http://localhost:3001/pokemons?name=" + payload)
+            var json = await axios.get("/pokemons?name=" + payload)
             return dispatch({
                 type:"SEARCH",
                 payload: json.data
