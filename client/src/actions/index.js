@@ -2,7 +2,7 @@ import axios from "axios"
 
 export function getPokemons(){
     return async function(dispatch){
-        var json = await axios.get("http://localhost:3001/pokemons", {
+        var json = await axios.get("/pokemons", {
            
         })
         return dispatch({
@@ -14,7 +14,7 @@ export function getPokemons(){
 
 export function getTypes(){
     return async function(dispatch){
-        var json = await axios.get("http://localhost:3001/types", {
+        var json = await axios.get("/types", {
             
         })
         return dispatch({
@@ -26,7 +26,7 @@ export function getTypes(){
 
 export function postPokemon(payload){
     return async function(dispatch){
-        var json = await axios.post("http://localhost:3001/pokemons", payload)
+        var json = await axios.post("/pokemons", payload)
         return json
 }
 } 
@@ -54,7 +54,7 @@ export const orderName= (payload) => {
 export const detail= (id)=>{
 return async function (dispatch){
     try {
-        var json = await axios.get("http://localhost:3001/pokemons/" + id)
+        var json = await axios.get("/pokemons/" + id)
         return dispatch({
             type:"DETAIL",
             payload: json.data
@@ -70,7 +70,7 @@ return async function (dispatch){
 export const searchBar= (payload) => {
     return async function (dispatch){
         try {
-            var json = await axios.get("http://localhost:3001/pokemons?name=" + payload)
+            var json = await axios.get("/pokemons?name=" + payload)
             return dispatch({
                 type:"SEARCH",
                 payload: json.data
